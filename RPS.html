@@ -3,9 +3,37 @@
     <head>
         <meta charset="utf-8">
         <title>Rock, Paper, Scissors Game</title>
+        <style>
+            .title {
+                font-family: monospace;
+                color: #ff6347;
+                text-align: center;
+                margin-top: 450px;
+
+
+            }
+            body {
+                background-color: aquamarine;
+            }
+           .btns {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            
+           }
+            
+        </style>
     </head>
     <body>
-        <script>
+        <div class="title">
+        <h1>Rock, Paper, Scissors</h1>
+        </div>
+        <div class="btns">
+            <button class = "rock">Rock</button>
+            <button class = "Paper">Paper</button>
+            <button class = "Scrissors">Scrissors</button>
+        </div>
+        <script defer>
             let human = 0
             let comp = 0
             function getCompCh() {
@@ -84,8 +112,11 @@
                     comp += 1
                 }
             }
+            document.querySelector('.btns').addEventListener("click", (event) => {
+                if (event.target.rock =)
+            })
         }
-            play()
+            
             
 
         </script>
