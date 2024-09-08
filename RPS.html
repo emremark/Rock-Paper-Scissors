@@ -19,7 +19,13 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            
+           }
+           .score {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            font-family: monospace;
+            color: #ff6347;
            }
             
         </style>
@@ -29,94 +35,99 @@
         <h1>Rock, Paper, Scissors</h1>
         </div>
         <div class="btns">
-            <button class = "rock">Rock</button>
-            <button class = "Paper">Paper</button>
-            <button class = "Scrissors">Scrissors</button>
+            <button class = "btn" value="Rock">Rock</button>
+            <button class = "btn" value="Paper">Paper</button>
+            <button class = "btn" value="Scissors">Scissors</button>
         </div>
-        <script defer>
-            let human = 0
-            let comp = 0
-            function getCompCh() {
-                let compCh = ""
-                const compC = Math.floor(Math.random() * 3)
-                if (compC == 0) {
-                    compCh = "rock"
-                    return compCh
-                }
-                else if (compC == 1) {
-                    compCh = "paper"
-                    return compCh
-                }
-                else {
-                    compCh = "scissors"
-                    return compCh
-                } 
-            }
-            function getHuman() {
-                while (true) {
-                    const humanC = prompt("Rock, Paper or Scissors?")
-                    if (humanC === null || humanC === "") {
-                        return null;
-                        break;
+        <div class = "score">
+            <h3>Human = </h3>
+            <h3 class = "hmnscr">0</h3>
+            <h3>Computer = </h3>
+            <h3 class = "cmpscr">0</h3>
+        </div>
+<script>
+    let human = 0
+    let comp = 0
+    
+    const start = document.querySelectorAll(".btn");
+    const humanScoreEl = document.querySelector(".hmnscr");
+    const computerScoreEl = document.querySelector(".cmpscr");
 
-                    }
-                    const choice = humanC.toLowerCase().trim();
-                    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-                        return choice;
-                    }
-                    else {
-                    alert("Please enter a valid choice");
-                     }
-                }
-            }
-            
-            function showScore() {
-                alert(`Score is: You ${human} points, Computer ${comp} points`)
-            }
+    start.forEach(button => {
+        button.addEventListener("click", () => {
+            let humanChoise = button.value;
+            play(humanChoise)
+        } )
+    })
 
-            function play() {
-
-                while (true) {
-                    const compCh = getCompCh();
-                    const humanC = getHuman();
-                    if (humanC === null) {
-                        showScore();
-                        break;
-                    }
-                
-                if (humanC == compCh) {
-                    alert("It`s a draw")
-                }
-                else if (humanC == "rock" && compCh == "scissors") {
-                    alert("You won! Rock beat Scissors.")
-                    human += 1
-                }
-                else if (humanC == "rock" && compCh == "paper") {
-                    alert("You lose! Paper beats Rock.")
-                    comp += 1
-                }
-                else if (humanC == "paper" && compCh == "rock") {
-                    alert("You won! Paper beats Rock.")
-                    human += 1
-                }
-                else if (humanC == "paper" && compCh == "scissors") {
-                    alert("You lose! Scissors beat Paper.")
-                    comp += 1
-                }
-                else if (humanC == "scissors" && compCh == "paper") {
-                    alert("You won! Scissors beat Paper.")
-                    human += 1
-                }
-                else if (humanC == "scissors" && compCh == "rock") {
-                    alert("You lose! Rock beats Scissors.")
-                    comp += 1
-                }
-            }
-
+    function getCompCh() {
+        let compCh = ""
+        const compC = Math.floor(Math.random() * 3)
+        if (compC == 0) {
+            compCh = "Rock"
+            return compCh
         }
-            
-            
+        else if (compC == 1) {
+            compCh = "Paper"
+            return compCh
+        }
+        else {
+            compCh = "Scissors"
+            return compCh
+        } 
+    }
+    
+    function upScore() {
+        humanScoreEl.textContent = human;
+        computerScoreEl.textContent = comp;
+    }
+  
+    function play(humanChoise) {
 
-        </script>
-    </body>
+        
+        const compCh = getCompCh();
+            
+        
+        if (humanChoise == compCh) {
+            alert("It`s a draw")
+        }
+        else if (humanChoise == "Rock" && compCh == "Scissors") {
+            alert("You won! Rock beat Scissors.")
+            human += 1
+            upScore()
+        }
+        else if (humanChoise == "Rock" && compCh == "Paper") {
+            alert("You lose! Paper beats Rock.")
+            comp += 1
+            upScore()
+        }
+        else if (humanChoise == "Paper" && compCh == "Rock") {
+            alert("You won! Paper beats Rock.")
+            human += 1
+            upScore()
+        }
+        else if (humanChoise == "Paper" && compCh == "Scissors") {
+            alert("You lose! Scissors beat Paper.")
+            comp += 1
+            upScore()
+        }
+        else if (humanChoise == "Scissors" && compCh == "Paper") {
+            alert("You won! Scissors beat Paper.")
+            human += 1
+            upScore()
+        }
+        else if (humanChoise == "Scissors" && compCh == "Rock") {
+            alert("You lose! Rock beats Scissors.")
+            comp += 1
+            upScore()
+        }
+        else if (human === 5 || comp === 5) {
+            human = 0;
+            comp = 0;
+            upScore()
+            
+        }
+    }
+</script>
+</body>
 </html>
