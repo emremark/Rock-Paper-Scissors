@@ -86,7 +86,6 @@
 
         
         const compCh = getCompCh();
-            
         
         if (humanChoise == compCh) {
             alert("It`s a draw")
@@ -94,38 +93,45 @@
         else if (humanChoise == "Rock" && compCh == "Scissors") {
             alert("You won! Rock beat Scissors.")
             human += 1
-            upScore()
+            //upScore()
         }
         else if (humanChoise == "Rock" && compCh == "Paper") {
             alert("You lose! Paper beats Rock.")
             comp += 1
-            upScore()
+            //upScore()
         }
         else if (humanChoise == "Paper" && compCh == "Rock") {
             alert("You won! Paper beats Rock.")
             human += 1
-            upScore()
+            //upScore()
         }
         else if (humanChoise == "Paper" && compCh == "Scissors") {
             alert("You lose! Scissors beat Paper.")
             comp += 1
-            upScore()
+            //upScore()
         }
         else if (humanChoise == "Scissors" && compCh == "Paper") {
             alert("You won! Scissors beat Paper.")
             human += 1
-            upScore()
+            //upScore()
         }
         else if (humanChoise == "Scissors" && compCh == "Rock") {
             alert("You lose! Rock beats Scissors.")
             comp += 1
-            upScore()
+            //upScore()
         }
-        else if (human === 5 || comp === 5) {
+        upScore()
+        if (human === 5) {
+            alert("Victory, you won 5 in a row!");
             human = 0;
             comp = 0;
             upScore()
-            
+        }
+        else if (comp === 5) {
+            alert("Loser, computer won 5 in a row!");
+            human = 0;
+            comp = 0;
+            upScore()
         }
     }
 </script>
